@@ -2,7 +2,9 @@
 
 Makes it possible to draw donuts with `L.Donut` on Leaflet maps. 
 
-It extends `L.Circle` and adds a inner radius.
+It extends `L.Circle` and adds a inner radius. Look into the [Demo](https://falke-design.github.io/L.Donut/).
+
+
 
 ![grafik](https://user-images.githubusercontent.com/19800037/139536038-b0d85d7d-461c-490f-94a9-5956677bab0b.png)
 
