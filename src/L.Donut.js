@@ -1,3 +1,16 @@
+/*
+ * @class Donut
+ * @aka L.Donut
+ * @inherits Circle
+ *
+ * A class for drawing donut overlays on a map. Extends `Circle`.
+ *
+ * @example
+ *
+ * ```js
+ * L.donut([50.5, 30.5], {radius: 200, innerRadius: 100, innerRadiusAsPercent: false}).addTo(map);
+ * ```
+ */
 L.Donut = L.Circle.extend({
 
     initialize: function (latlng, options, legacyOptions) {
@@ -20,15 +33,15 @@ L.Donut = L.Circle.extend({
 
 
     // @method setInnerRadius(radius: Number): this
-    // Sets the inner radius of a circle. Units are in meters or percent.
+    // Sets the inner radius of the donut. Units are in meters or percent.
     setInnerRadius: function (radius) {
         if (radius > this._mRadius) { throw new Error('Inner radius must be smaller then the outer radius'); }
         this.options.innerRadius = this._mInnerRadius = radius;
         return this.redraw();
     },
 
-    // @method getRadius(): Number
-    // Returns the current inner radius of a circle. Units are in meters or percent.
+    // @method getInnerRadius(): Number
+    // Returns the current inner radius of the donut. Units are in meters or percent.
     getInnerRadius: function () {
         return this._mInnerRadius;
     },
@@ -112,7 +125,7 @@ L.SVG.include({
             innerR2 = Math.max(Math.round(layer._innerRadiusY), 1) || innerR,
             innerArc = 'a' + innerR + ',' + innerR2 + ' 0 1,0 ';
 
-        // drawing a circle with two half-arcs
+        // drawing a circle with hole with two half-arcs
         var d;
         if (layer._empty()) {
             d = 'M0 0';
