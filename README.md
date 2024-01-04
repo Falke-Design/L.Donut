@@ -45,4 +45,4 @@ You can use `new L.Donut` or the factory `L.donut`.
 | radius                              | Outer radius. The outer radius must be greater then the inner radius.                     |
 | innerRadius                         | Inner radius. It can be a meter value or a percent (0-1) value of the outer radius.       |
 | innerRadiusAsPercent                | Default `false`. Defines if the inner radius is a percent value of the outer radius.      |
-| <`L.Circle` options>                | Other `L.Circle` options: [Docs](https://leafletjs.com/reference-1.7.1.html#circle)       |
+| <`L.Circle` options>                | Other `L.Circle` options: [Docs](https://leafletjs.com/reference.html#circle)             |
