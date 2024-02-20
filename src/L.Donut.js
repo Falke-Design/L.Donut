@@ -80,6 +80,9 @@ L.Donut = L.Circle.extend({
 
             this._point = map.latLngToLayerPoint(this._latlng);
             this._radius = this._point.x - map.latLngToLayerPoint(latlng2).x;
+
+            var latlng3 = crs.unproject(crs.project(this._latlng).subtract([this._mInnerRadius, 0]));
+            this._innerRadius = this._point.x - map.latLngToLayerPoint(latlng3).x;
         }
 
         this._updateBounds();
@@ -122,7 +125,7 @@ L.SVG.include({
             r2 = Math.max(Math.round(layer._radiusY), 1) || r,
             arc = 'a' + r + ',' + r2 + ' 0 1,0 ';
 
-        var innerP = layer._innerPoint,
+        var innerP = layer._innerPoint || p,
             innerR = Math.max(Math.round(layer._innerRadius), 1),
             innerR2 = Math.max(Math.round(layer._innerRadiusY), 1) || innerR,
             innerArc = 'a' + innerR + ',' + innerR2 + ' 0 1,0 ';
@@ -152,7 +155,7 @@ L.Canvas.include({
             ctx = this._ctx,
             r = Math.max(Math.round(layer._radius), 1),
             s = (Math.max(Math.round(layer._radiusY), 1) || r) / r,
-            innerP = layer._innerPoint,
+            innerP = layer._innerPoint || p,
             innerR = Math.max(Math.round(layer._innerRadius), 1),
             innerS = (Math.max(Math.round(layer._innerRadiusY), 1) || innerR) / innerR;
 
